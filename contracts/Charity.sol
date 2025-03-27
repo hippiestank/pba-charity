@@ -12,7 +12,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  */
 contract PbaCharity is Ownable {
   struct Charity {
-    address account;
     string name;
     string description;
   }
@@ -26,7 +25,7 @@ contract PbaCharity is Ownable {
     address account,
     string memory name,
     string memory description) public onlyOwner {
-    charities[msg.sender] = Charity(account, name, description);
+    charities[account] = Charity(name, description);
   }
 
   function donate(address charity, address token, uint256 amount) public payable {
